@@ -206,7 +206,7 @@ syn keyword matlabFunc expm logm
 "Factorization
 syn keyword matlabFunc cholupdate planerot qrdelete qrinsert qrupdate qz 
 "Interpolation
-syn keyword matlabFunc griddata griddata3 griddatan interp1q interpft mkpp padecoef pchip ppval spline unmkpp 
+syn keyword matlabFunc griddata griddata3 griddatan interp1q interpft mkpp padecoef pchip ppval spline unmkpp scatteredInterpolant
 "Delaunay Triangulation and Tessellation
 syn keyword matlabFunc tetramesh trimesh triplot trisurf 
 "Convex Hull
@@ -302,7 +302,7 @@ syn keyword matlabFunc cdfepoch cdfinfo cdfread cdfwrite todatenum
 "Flexible Image Transport System
 syn keyword matlabFunc fitsinfo fitsread 
 "Hierarchical Data Format (HDF)
-syn keyword matlabFunc hdf hdf5 hdf5info hdf5read hdf5write hdfinfo hdfread hdftool 
+syn keyword matlabFunc hdf hdf5 hdf5info hdf5read hdf5write hdfinfo hdfread hdftool h5read
 "Band-Interleaved Data
 syn keyword matlabFunc multibandread multibandwrite 
 
