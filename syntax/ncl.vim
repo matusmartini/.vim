@@ -487,9 +487,11 @@ syn keyword nclKeyword load local logical long _Missing Missing
 syn keyword nclKeyword noparent numeric quit QUIT Quit short
 syn keyword nclKeyword snumeric string ubyte uint uint64 ulong ushort
 
+syn match nclKeyword "\(+\|-\|/\|\*\|=\)"
 syn match nclBrackets "(/"
 syn match nclBrackets "\/)"
 syn match nclBrackets "->"
+syn match nclBrackets "@"
 syn match nclOperator "\\"
 syn match nclBrackets "{"
 syn match nclBrackets "\}"
