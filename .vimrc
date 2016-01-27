@@ -13,7 +13,7 @@ set nobackup            "DO NOT KEEP a backup file, USE versions instead
 set history=50          "KEEP 50 lines of command line history
 set ruler               "SHOW the cursor position all the time
 set showcmd             "DISPLAY incomplete commands
-set incsearch           "DO incremental searching
+"set incsearch           "DO incremental searching
 set showmatch           "briefly JUMP to matching bracket if insert one
 set showfulltag         "SHOW/INSERT the full tag with keyword options
 
