@@ -292,7 +292,7 @@ if &t_Co > 2 || has("gui_running")
   "set list listchars=tab:»¤,trail:¤
   "ENTER the middle-dot by pressing ctrl-k then .M
   "ino <f6> <c-o>:set list! listchars=tab:>-,trail:*<cr>
-  no <c-t> :set list! listchars=tab:>-,trail:-<cr>
+  "no <c-t> :set list! listchars=tab:>-,trail:-<cr>
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
   "au FileType pro so /usr/share/vim/vim70/syntax/idl.vim
@@ -416,6 +416,7 @@ set nrformats=hex
 " SEPARATE files to give the order, since allen is alphabetically favored
 ":tnext JUMPs to next tag if more with the same name
 set tags=tags,~/tools/tags,~/.vim/tags
+"JUMP to a tag c-t, RETURN after a tag jump c-t
 
 set completeopt+=preview
 
