@@ -1,0 +1,125 @@
+#http://www.gnu.org/software/screen/manual/screen.html
+
+
+vbell off 
+# SAVE all my work on hangup - very important
+autodetach on 
+startup_message off 
+pow_detach_msg "Screen session of \$LOGNAME \$:cr:\$:nl:ended." 
+defscrollback 1000
+#caption always "%{= bC}%-Lw%{= bW}%50>%n%f* %t%{-}%+Lw%>%=%{= bW}| %M %d %c" 
+#caption always "%{= kc}%H (system load: %l)%-21=%{= .m}%D %d.%M.%Y %0c"
+
+# USE xterm title as hardstatus line 
+terminfo xterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007' 
+terminfo Eterm 'hs:ts=\E]0;:fs=\007:ds=\E]0;screen\007' 
+
+hardstatus on
+hardstatus alwayslastline
+#hardstatus string "%{.bW}%-w%{.mW}%n %t%{-}%+w %=%{..G} %H %{..Y} %m/%d %C%a"
+#hardstatus string "%{.bW}%-w%{.rW}%n:%t%{-}%+w %=%{..G} %{MK}%H load: %{CK}%l%{.bW}  %{..G}%D %{..W}%d.%M%{..G}.%Y %0c"
+#rw white on red
+# Bk black on bold blue
+hardstatus string "%{.Bk}%-w%{.Rk}%n:%t%{-}%+w %= %{MK}%H load: %{CK}%l  %{RK}%D %{..W}%d.%M%{..G}.%Y %0c"
+# The following hardstatus setting is for sooty   if real-time loads not displayed properly
+#hardstatus string "%{.Bk}%-w%{.Rk}%n:%t%{-}%+w"
+
+#shelltitle '> |csh:'
+#shelltitle '>|'
+shelltitle '>|'     # Matus this worked in cshell
+#shelltitle "$ |bash"
+
+# REMAP your c-a attention key
+# Because c-a is used in VIM and Backtick (`) is used in SHELL and VIM
+#c-a is default escape sequence
+
+#escape \034\034    #doesn't work
+#escape \047\047    #doesn't work
+#escape ^gg         #Ctrl-g
+#escape ^\\\        #Ctrl-\
+
+# MAKE Backtick the attention key (c-a), if (backtick) needed TYPE it twice slowly
+#escape ``
+# Could not figure out how to map ctrl+`, so this one is with shift
+# Just to REMOVE ctrl+a binding so it is available for VIM  !!!
+escape ^~`
+#   If you use Vim under screen, press Ctrl-A and then hit a.
+#   Screen then sends on a translation of Ctrl-A to the underlying program, Vim.
+
+# MAKE the f12 (not f2!) key an alternative screen escape (besides what's set)
+#k1, k2, ..., k8, k9, k,F1, F2 are F1, F2, ... F8, F9, F10, F11, F12
+bindkey -k F2 command
+# shift-Fn may not work in all terminals F3 -> s-f1, FA -> s-f8
+# REDEFINE the escape sequence to Ctrl+Space 
+# good for the screen in screen (if multiple windows in outer and inner screen)
+# to use backtick for outer screen and Ctrl+Space for inner screen
+#escape "^  "
+#escape `^k'
+
+# START window numbering at 1, not 0 (NEED all 4 commands)
+bind c screen 1
+bind ^c screen 1
+bind 0 select 10
+screen 1
+
+# REMOVE some stupid, dangerous key bindings
+bind k 
+bind ^k 
+bind . 
+#c-a \ quit all windows
+bind \
+bind ^\
+bind h 
+bind ^h 
+bind Q
+
+# MAKE them better 
+bind 'K' kill
+# TOGGLE the current login state of window by c-a L (F12 L)
+#bind 'I' login on
+#bind 'O' login off
+#bind '}' history
+
+# KILL attached screen
+#screen -X -S 30677.ttys003.WE24639 kill
+
+#bind = resize = 
+#bind + resize +1 
+#bind - resize -1 
+#bind _ resize max 
+
+
+#c-a S split the screen
+#c-a TAB move to the next window (made by split)
+#c-a X remove a window
+#c-a : ALLOWS me to enter .screenrc command lines to execute after the screen is already open
+
+#c-a "
+bind ' ' windowlist -b
+
+# After the command is done the window is closed
+#screen -t IDL 1 idl
+#screen -t tools 2 csh
+#
+# SEE ~/.screenrc_par
+#
+#c-a [ ENTER the copy mode (ALLOWs to scroll up and down through output in a screen session)
+#
+# DETACH
+#<F12> d
+#
+# TYPE in shell to see a list of screen sessions
+#screen -list       or  screen -ls
+# This also shows the directory in which all screen sessions are listed
+#
+# START screen session with a name
+#screen -S mojemeno
+#
+# RECONNECT to a screen that is attached somewhere
+#screen -D -r screenname
+#
+# RENAME screen session name
+#C-a :sessionname mojemeno
+#
+# SET the name of the current window to windowalias     Windowtitle
+#<F12> A
