@@ -271,6 +271,8 @@ if &t_Co > 2 || has("gui_running")
   " ADD a more visual cursor
   set cursorline
   hi CursorLine ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
+  set cursorcolumn
+  hi CursorColumn ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
   "hi CursorLine ctermfg=darkblue cterm=none ctermbg=white term=none guibg=none
   " MAKE easier to read highlighted text
   hi NoHighLight ctermbg=black
