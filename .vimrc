@@ -501,7 +501,7 @@ au BufNewFile,BufRead *.ncl no <f8> :w<cr>!ncl < %:p<cr>
 "<s-f8> mapped to RUN the idl on the opened file  (IDL> .r subroutine)
 
 
-au BufEnter *.sh if getline(1) == "" | call setline(1, '#!/bin/csh -f') | endif
+"au BufEnter *.sh if getline(1) == "" | call setline(1, '#!/bin/csh -f') | endif
 au BufWritePost * if getline(1) =~ "^#!/" | silent exe "!chmod u+x <afile> >& /dev/null" | endif
 
 " A better option is to MOVE the syntax file into ~/.vim/syntax
