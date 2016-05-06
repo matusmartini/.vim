@@ -145,7 +145,7 @@ no = <c-w>=
 
 " ctrl-w DELETE the previous word (insert mode)
 ino <f7> <c-o>dw
-no <f7> dw
+"no <f7> dw
 "ino <f9> <c-o>u
 "ino <f9> <c-o><c-r>
 " {},() JUMP to empty line before/after paragraph
@@ -298,7 +298,7 @@ if &t_Co > 2 || has("gui_running")
 
   " Remove trailing whitespace:
   " \s finds whitespace (a space or a tab), and \+ finds one or more occurrences.
-  no <c-r> :%s/\s\+$//<cr>
+  no <f7> :%s/\s\+$//<cr>
 
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
