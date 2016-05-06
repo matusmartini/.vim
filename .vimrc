@@ -295,6 +295,11 @@ if &t_Co > 2 || has("gui_running")
   "ENTER the middle-dot by pressing ctrl-k then .M
   "ino <f6> <c-o>:set list! listchars=tab:>-,trail:*<cr>
   "no <c-t> :set list! listchars=tab:>-,trail:-<cr>
+
+  " Remove trailing whitespace:
+  " \s finds whitespace (a space or a tab), and \+ finds one or more occurrences.
+  no <c-r> :%s/\s\+$//<cr>
+
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
   "au FileType pro so /usr/share/vim/vim70/syntax/idl.vim
@@ -448,7 +453,7 @@ set printoptions=portrait:n,number:y
 
 
 " The following should also ignore the leading whitespaces
-" TRY uncommenting the followin line if need to ignore leading whitespaces
+" TRY uncommenting the following line if need to ignore leading whitespaces
 "set diffexpr=MyDiff()
 function MyDiff()
    let opt = ""
