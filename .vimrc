@@ -140,10 +140,11 @@ no + <c-w>+
 " MAKE the current window as big as possible
 no _ <c-w>_
 set wmh=0
-" MAKE window sizes equal
+" MAKE window sizes equal   
 no = <c-w>=
 
 " ctrl-w DELETE the previous word (insert mode)
+" DELETE current word
 ino <f7> <c-o>dw
 "no <f7> dw
 "ino <f9> <c-o>u
@@ -168,7 +169,12 @@ ino <Up> <c-o>gk
 " Microsoft Office select in Visual
 " First REMOVE trailing characters from the beginning of all lines :%s/^\s\{1,}\r*$//cg
 " so you can JUMP with ctrl+arrows (SEE below)
-cno <c-t> %s+^\s\{1,}\r*$++cg
+cno <c-t> %s+^\s\{1,}\r*$++cgi
+
+" REMOVE trailing whitespace:
+" \s finds whitespace (a space or a tab), and \+ finds one or more occurrences
+no <f7> :%s/\s\+$//cgi
+
 "nn <c-down> }
 "nn <c-up> {
 "vn <c-down> }
@@ -282,6 +288,9 @@ if &t_Co > 2 || has("gui_running")
   " REVERT back to highlighted background behind text by only ignoring unusual string "NoHighLight"
   au InsertLeave * match NoHighLight /NoHighLight/
 
+  "hi OverLength ctermbg=LightRed ctermfg=white guibg=#FFD9D9
+  "match OverLength /\%133v.*/
+
 
 
   "USE 4 spaces when 'Tab' is hit, except in Makefiles
@@ -295,10 +304,6 @@ if &t_Co > 2 || has("gui_running")
   "ENTER the middle-dot by pressing ctrl-k then .M
   "ino <f6> <c-o>:set list! listchars=tab:>-,trail:*<cr>
   "no <c-t> :set list! listchars=tab:>-,trail:-<cr>
-
-  " Remove trailing whitespace:
-  " \s finds whitespace (a space or a tab), and \+ finds one or more occurrences.
-  no <f7> :%s/\s\+$//<cr>
 
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
@@ -467,7 +472,7 @@ function MyDiff()
     \  " > " . v:fname_out
 endfunction"
 " IGNORE (trailing) whitespaces in the diff (not the leading ones, alas!)
-set diffopt+=iwhite
+"set diffopt+=iwhite
 set diffopt+=icase
 
 
