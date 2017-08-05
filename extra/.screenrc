@@ -20,6 +20,7 @@ hardstatus alwayslastline
 #hardstatus string "%{.bW}%-w%{.rW}%n:%t%{-}%+w %=%{..G} %{MK}%H load: %{CK}%l%{.bW}  %{..G}%D %{..W}%d.%M%{..G}.%Y %0c"
 #rw white on red
 # Bk black on bold blue
+# Gk black on bold green    CAN USE to distinguish systems: gordon, hopper, etc.
 hardstatus string "%{.Bk}%-w%{.Rk}%n:%t%{-}%+w %= %{MK}%H load: %{CK}%l  %{RK}%D %{..W}%d.%M%{..G}.%Y %0c"
 # The following hardstatus setting is for sooty   if real-time loads not displayed properly
 #hardstatus string "%{.Bk}%-w%{.Rk}%n:%t%{-}%+w"
@@ -103,7 +104,7 @@ bind ' ' windowlist -b
 #
 # SEE ~/.screenrc_par
 #
-#c-a [ ENTER the copy mode (ALLOWs to scroll up and down through output in a screen session)
+#c-a [ ENTER the Copy mode (ALLOWs to scroll up and down through output in a screen session)
 #
 # DETACH
 #<F12> d
@@ -119,7 +120,7 @@ bind ' ' windowlist -b
 #screen -D -r screenname
 #
 # RENAME screen session name
-#C-a :sessionname mojemeno
+#<F12> :sessionname mojemeno
 #
 # SET the name of the current window to windowalias     Windowtitle
 #<F12> A

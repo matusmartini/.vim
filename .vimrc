@@ -217,7 +217,7 @@ no <space> za
 ":set fdo-=search
 
 " Vim saves AUTOMATICALLY and restores folds when a file is closed and re-opened
-"au BufWinLeave *.pro mkview        ;when using vimdiff it's failing
+"au BufWinLeave *.pro mkview        ;fails when using vimdiff
 "au BufWinEnter * silent lo   ;rather LIST filetypes since vimshell has problems
 au BufWinEnter *.pro,*.vim,*.php,*.htm,*.html,*.css,*.txt,.alias,.*rc,.*rc_par silent lo
 au FileType sh,csh silent lo 
@@ -295,7 +295,7 @@ if &t_Co > 2 || has("gui_running")
 
   "USE 4 spaces when 'Tab' is hit, except in Makefiles
   set tabstop=8
-  set shiftwidth=4
+  set shiftwidth=2
   set softtabstop=4
   set expandtab
 
