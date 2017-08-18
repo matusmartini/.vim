@@ -1,7 +1,7 @@
 [user]
-        ;email = matus.martini.ctr@nrlmry.navy.mil
-        ;name = Matus Martini
-        email = martini.matus@gmail.com
+        email = matus.martini.ctr@nrlmry.navy.mil
+        name = Matus Martini
+        ;email = martini.matus@gmail.com
 [core]
         quotepath = false
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
@@ -33,4 +33,10 @@
         br = branch
         st = status
         ls = ls-config
-    d2 = difftool br_GFS master
+    ;d2 = difftool br_GFS master
+    ;d2 = difftool master NEP-81-clouds_init
+    d2 = difftool master NEP-163-gfs-physics-tendencies
+    l = log --stat -M
+    ;ll = log origin/NEP-10-gfs_Physics br_GFS --stat -M
+    ll = log origin/master master --stat -M
+    std = stash show -p stash@{0}
