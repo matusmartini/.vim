@@ -39,7 +39,7 @@ if has("autocmd")
   au BufNewFile,BufRead authorized_keys,id_rsa.pub,thunderbird*csv  setf mail
   au BufNewFile,BufRead idl.*ini,dale.txt,*.pro  setf idlang
   au BufNewFile,BufRead *.ncl setf ncl
-  au BufNewFile,BufRead *namelist*,*.inp,*.jnl,*.in,*.nml  setf fortran
+  au BufNewFile,BufRead *namelist*,*.inp,*.jnl,*.in,*.nml,*.IN  setf fortran
   au BufNewFile,BufRead config*  setf make
   "mail files (in ~/maildir/*/cur)
   au BufEnter * if expand("%:p:h") =~ "maildir/.*cur" | setf mail | endif
@@ -473,7 +473,7 @@ function MyDiff()
 endfunction"
 " IGNORE (trailing) whitespaces in the diff (not the leading ones, alas!)
 "set diffopt+=iwhite
-set diffopt+=icase
+"set diffopt+=icase
 
 
 " Vimdiff
