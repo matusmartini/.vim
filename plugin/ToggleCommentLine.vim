@@ -26,7 +26,7 @@ function! ToggleCommentLine()
         let commentSymbol = '//'
     elseif fileType =~ '[^w]*sh$' || fileType == 'make' || fileType == 'python' || fileType == 'perl' || fileType == 'crontab'
         let commentSymbol = '#'
-    elseif filename =~ '.screenrc' || filename =~ '[Rr]egistry*' || filename =~ 'cshrc_common'
+    elseif filename =~ '.screenrc' || filename =~ '[Rr]egistry*' || filename =~ 'cshrc_common' || fileType == 'cfg'
         let commentSymbol = '#'
     else
         "for IDL scripts

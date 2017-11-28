@@ -44,6 +44,7 @@ if has("autocmd")
   "mail files (in ~/maildir/*/cur)
   au BufEnter * if expand("%:p:h") =~ "maildir/.*cur" | setf mail | endif
 
+  "au FileType cfg setlocal commentstring=#\ %s     "Overridden ToggleCommentLine.vim
 
 
   "ENABLE file type detection
