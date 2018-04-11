@@ -141,7 +141,7 @@ no + <c-w>+
 " MAKE the current window as big as possible
 no _ <c-w>_
 set wmh=0
-" MAKE window sizes equal   
+" MAKE window sizes equal
 no = <c-w>=
 
 " ctrl-w DELETE the previous word (insert mode)
@@ -185,9 +185,9 @@ no <f7> :%s/\s\+$//cgi
 
 " On Mac, cannot MAP the meta characters! :(
 " MOVE by one word
-no <f6> w
+"no <f6> w
 ino <f6> <c-o>w
-no <f5> b
+"no <f5> b
 ino <f5> <c-o>b
 " DEL to the BOL <c-u>
 " DEL previous word <c-w>
@@ -221,7 +221,7 @@ no <space> za
 "au BufWinLeave *.pro mkview        ;fails when using vimdiff
 "au BufWinEnter * silent lo   ;rather LIST filetypes since vimshell has problems
 au BufWinEnter *.pro,*.vim,*.php,*.htm,*.html,*.css,*.txt,.alias,.*rc,.*rc_par silent lo
-au FileType sh,csh silent lo 
+au FileType sh,csh silent lo
 
 " SWITCH syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
@@ -276,11 +276,14 @@ if &t_Co > 2 || has("gui_running")
   hi Search ctermfg=black
   hi Todo term=none ctermfg=1 ctermbg=4 guifg=1 guibg=4
   " ADD a more visual cursor
-  set cursorline
+  "set cursorline
   hi CursorLine ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
-  set cursorcolumn
+  "set cursorcolumn
   hi CursorColumn ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
   "hi CursorLine ctermfg=darkblue cterm=none ctermbg=white term=none guibg=none
+  " TOGGLE
+  no <f6> :set cursorcolumn!<Bar>set cursorline!<CR>
+
   " MAKE easier to read highlighted text
   hi NoHighLight ctermbg=black
   "match NoHighLight /\S\+\(\s\+\|$\)/
@@ -309,25 +312,25 @@ if &t_Co > 2 || has("gui_running")
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
   "au FileType pro so /usr/share/vim/vim70/syntax/idl.vim
-  
+
   "TOGGLE Spell-check on/off
   cno <f7> setlocal spell! spelllang=en_us
-  
-  
+
+
   "TOGGLE search result highlighting
   "<f3> is reserved for Spaces on Mac :(
   "no <s-f3> :set hls!<bar>set hls?<cr>
   cno <f4> set hls!
-  
-  
+
+
   "HIGHLIGHT duplicate lines that follow each other
   "Careful c-a-f11 SWITCHes to different console
   "      - TRY coming back by pressing c-a-f4 (if accidentally hit)
   no ,, /^\(\S*\)$\n\1$<cr>
   "REMOVE them
   cno ,, :%s/^\(.*\)$\n\1$/\1/cgi
-  
-  
+
+
 endif   "gui_running (for highlighting)
 
 
@@ -378,7 +381,7 @@ imap <f9>  <Plug>CapsLockToggle
 
 
 " TYPE the name of the variable in the beginning of the line and then PRESS <f10>
-"ino <f10> <esc>0dwiif ~exist(<c-o>p) then <c-o>p = 
+"ino <f10> <esc>0dwiif ~exist(<c-o>p) then <c-o>p =
 "no <f10> :%s/if n_elements(\(.*\)) eq 0 then/if \~exist(\1) then/cgi
 
 " SEARCH for stops in IDL, SEARCH backwards by typing (capital) N
@@ -395,7 +398,7 @@ no <c-f> mfgg/
 "SPLIT window vertically with binded scrolling
 cno VV vsp<cr>mvgg:set scrollbind<cr><c-w>lggLzt:set scrollbind<cr><c-w>h'v
 cno Fm set foldmethod=manual
-cno Se Search 
+cno Se Search
 "REPLACE the current line with line stored in the copy-buffer
 nn yr pkddY
 
