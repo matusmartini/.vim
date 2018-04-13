@@ -6,7 +6,7 @@
         quotepath = false
         whitespace=fix,-indent-with-non-tab,trailing-space,cr-at-eol
 [diff]
-	tool = vimdiff
+        tool = vimdiff
 [color]
         ui = true
 [color "branch"]
@@ -25,14 +25,15 @@
         untracked = cyan reverse
         branch = magenta
 [difftool]
-	prompt = false
+        prompt = false
 [alias]
-	d = difftool
+        d = difftool
         ci = commit
         co = checkout
-        br = branch
+        br = branch --sort=-committerdate
+        ;git br | tac   ; PRINT last-modified local branch at the end (reverse cat command)
         st = status
-        ls = ls-config
+        ls = ls-files
     ;d2 = difftool br_GFS master
     ;d2 = difftool master NEP-81-clouds_init
     d2 = difftool master NEP-163-gfs-physics-tendencies
