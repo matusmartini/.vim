@@ -335,7 +335,6 @@ endif   "gui_running (for highlighting)
 
 
 
-
 " ENABLE mouse in all modes normal, visual, insert
 "set mouse=a
 "set mouse=n
