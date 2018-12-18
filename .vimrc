@@ -385,6 +385,7 @@ imap <f9>  <Plug>CapsLockToggle
 
 " SEARCH for stops in IDL, SEARCH backwards by typing (capital) N
 no <f10> /\<stop\><cr>
+"no <f10> /^[^;]top<cr>
 
 "REPLACE a line (Command mode)
 "the space allows for (ctrl+arrows) jumps
@@ -485,6 +486,7 @@ endfunction"
 "do       diff obtain
 "dp       diff put
 ":diffu   diff update
+"%diffput   put all changes from the current buffer to the 'other' buffer
 
 " UPDATE the view automatically in Vimdiff upon writing changes to file
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif
@@ -509,6 +511,8 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 " <f8> LaTeX and gview the output (postscript) of currently opened TeX file
 "au BufNewFile,BufRead *.tex no <f8> :!texps %:p<cr>
 au BufNewFile,BufRead *.ncl no <f8> :w<cr>!ncl < %:p<cr>
+au BufNewFile,BufRead *.py no <f8> :!python < %:p<cr>
+au BufNewFile,BufRead NPP_userIn.cfg no <f8> :!python ~/npp/NPP_main.py<cr>
 " SEE ~/.vim/syntax/idlang.vim for details
 "<f8> mapped to RUN the idl on the opened file  (IDL> subroutine)
 "<s-f8> mapped to RUN the idl on the opened file  (IDL> .r subroutine)
