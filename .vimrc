@@ -510,8 +510,8 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 " EXECUTE shell cmd by :!{cmd}
 " <f8> LaTeX and gview the output (postscript) of currently opened TeX file
 "au BufNewFile,BufRead *.tex no <f8> :!texps %:p<cr>
-au BufNewFile,BufRead *.ncl no <f8> :w<cr>:!ncl < %:p<cr>
-au BufNewFile,BufRead *.py no <f8> :w<cr>:!python < %:p<cr>
+au BufNewFile,BufRead *.ncl no <f8> :w<cr>:!ncl %:p<cr>
+au BufNewFile,BufRead *.py no <f8> :w<cr>:!python %:p<cr>
 au BufNewFile,BufRead NPP_userIn.cfg no <f8> :w<cr>:!python ~/npp/NPP_main.py<cr>
 " SEE ~/.vim/syntax/idlang.vim for details
 "<f8> mapped to RUN the idl on the opened file  (IDL> subroutine)
