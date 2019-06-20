@@ -173,6 +173,7 @@ EXEC 01;32      # bright green
 .php 01;33
 .rtf 01;33
 .xlm 01;33
+.xml 00;33
 .xls 01;33
 .xlsx 01;33
 .gsheet 01;33

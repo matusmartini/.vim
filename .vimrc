@@ -102,6 +102,10 @@ if &term !~ 'screen*'
   ino <f12>  <esc>:w<cr>li
 endif
 
+" SORT by the second column (-k2), treat the text as a number (n) and then sort in reverse (r)
+"   then SORT by the third column
+":%!sort -k2nr -k3nr
+
 
 " zE DELETEs all folds, zd DELETEs the fold at the cursor
 " zf/string CREATEs a fold from the cursor to the 'string'
@@ -138,8 +142,10 @@ cno qw q
 " ALLOW for quick resizing
 no - <c-w>-
 no + <c-w>+
+" INCREASE/DECREASE width of the window by 10/20
+"10<c-w>>  20<c-w><
 " MAKE the current window as big as possible
-no _ <c-w>_
+"no _ <c-w>_
 set wmh=0
 " MAKE window sizes equal
 no = <c-w>=
@@ -486,7 +492,7 @@ endfunction"
 "do       diff obtain
 "dp       diff put
 ":diffu   diff update
-"%diffput   put all changes from the current buffer to the 'other' buffer
+":%diffput   put all changes from the current buffer to the 'other' buffer
 
 " UPDATE the view automatically in Vimdiff upon writing changes to file
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif

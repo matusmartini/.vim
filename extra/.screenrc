@@ -107,7 +107,7 @@ bind ' ' windowlist -b
 #
 # SEE ~/.screenrc_par
 #
-# ENTER the copy mode (ALLOWs to scroll up and down through output in a screen session)
+# ENTER the copy mode (ALLOWs to scroll up and down through buffer in a screen session)
 #<F12> [
 #
 # DETACH
