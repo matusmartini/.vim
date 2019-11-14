@@ -94,6 +94,7 @@ no U u
 "ino <c-s> <c-o>:diffo<cr><c-o>:mkview<cr><c-o>:w<cr>
 "no K :diffo<cr>zM:mkview<cr>:w<cr>
 no <f11>  :w<cr>
+no <s-f11> :w!<cr>
 "ino <f11>  <esc>:w<cr>li
 
 " MAP f12 as f11, if not in Screen
@@ -332,7 +333,8 @@ if &t_Co > 2 || has("gui_running")
   "HIGHLIGHT duplicate lines that follow each other
   "Careful c-a-f11 SWITCHes to different console
   "      - TRY coming back by pressing c-a-f4 (if accidentally hit)
-  no ,, /^\(\S*\)$\n\1$<cr>
+  "no ,, /^\(\S*\)$\n\1$<cr>
+  no ,, /^\(\.*\)$\n\1$<cr>
   "REMOVE them
   cno ,, :%s/^\(.*\)$\n\1$/\1/cgi
 
@@ -517,8 +519,9 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 " <f8> LaTeX and gview the output (postscript) of currently opened TeX file
 "au BufNewFile,BufRead *.tex no <f8> :!texps %:p<cr>
 au BufNewFile,BufRead *.ncl no <f8> :w<cr>:!ncl %:p<cr>
-au BufNewFile,BufRead *.py no <f8> :w<cr>:!python %:p<cr>
-au BufNewFile,BufRead NPP_userIn.cfg no <f8> :w<cr>:!python ~/npp/NPP_main.py<cr>
+"au BufNewFile,BufRead *.py no <f8> :w<cr>:!python %:p<cr>
+au BufNewFile,BufRead *.cfg no <f8> :w<cr>:!npp -i %:p<cr>
+"au BufNewFile,BufRead NPP_userIn.cfg no <f8> :w<cr>:!python ~/npp/NPP_main.py<cr>
 " SEE ~/.vim/syntax/idlang.vim for details
 "<f8> mapped to RUN the idl on the opened file  (IDL> subroutine)
 "<s-f8> mapped to RUN the idl on the opened file  (IDL> .r subroutine)

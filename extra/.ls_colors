@@ -168,6 +168,7 @@ EXEC 01;32      # bright green
 .gdoc 00;33
 .inp 00;33
 .log 00;33
+.cfg 00;37
 .mdb 01;33
 .odt 01;33
 .php 01;33
@@ -187,6 +188,7 @@ EXEC 01;32      # bright green
 .odp 00;36
 .ncl 00;36
 .m 00;32
+.py 00;32
 #31 dark red
 .f 00;31
 .f90 00;31
