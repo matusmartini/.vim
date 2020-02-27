@@ -336,7 +336,7 @@ if &t_Co > 2 || has("gui_running")
   "no ,, /^\(\S*\)$\n\1$<cr>
   no ,, /^\(\.*\)$\n\1$<cr>
   "REMOVE them
-  cno ,, :%s/^\(.*\)$\n\1$/\1/cgi
+  cno ,, %s/^\(.*\)$\n\1$/\1/cgi
 
 
 endif   "gui_running (for highlighting)

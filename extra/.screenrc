@@ -128,3 +128,7 @@ bind ' ' windowlist -b
 #
 # SET the name of the current window to windowalias     Windowtitle
 #<F12> A
+#
+# CHANGE window
+#<F12> <number> 
+#<F12> <space><up/down><enter>
