@@ -504,10 +504,16 @@ autocmd BufWritePost * if &diff == 1 | diffupdate | endif
 " SEE ~/.vim/plugin/ToggleCommentLine.vim
 "no <buffer> <f1> :call ToggleCommentLine()<LF>
 " COMMENT at the 1st character of the current line and DO NOT MOVE down
-no <f1> :call ToggleCommentLine()<LF>l
+no <f1> :call ToggleCommentLine()<LF>0
 ino <f1> <esc>:call ToggleCommentLine()<LF>li
 " COMMENT the visual selection
 vno <buffer> <f1> :call ToggleCommentLine()<LF>
+
+"SHIFT line left by 8 white-spaces and CONTINUE writing at the EOL (useful when writing a commit message in Git)
+"no <f5> <<...A 
+"no <f5> 0xxA 
+" If only one file is modified:
+no <f5> 0xxj2ddxkA
 
 " For some reason <s-f1> or <a-f1> wouldn't map on metosrv8
 " Shift with functions keys does not work in Screen sessions!
@@ -521,6 +527,7 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 au BufNewFile,BufRead *.ncl no <f8> :w<cr>:!ncl %:p<cr>
 "au BufNewFile,BufRead *.py no <f8> :w<cr>:!python %:p<cr>
 au BufNewFile,BufRead *.cfg no <f8> :w<cr>:!npp -i %:p<cr>
+au BufNewFile,BufRead *.sh no <f8> :w<cr>:!sh %:p<cr>
 "au BufNewFile,BufRead NPP_userIn.cfg no <f8> :w<cr>:!python ~/npp/NPP_main.py<cr>
 " SEE ~/.vim/syntax/idlang.vim for details
 "<f8> mapped to RUN the idl on the opened file  (IDL> subroutine)
