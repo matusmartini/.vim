@@ -1,4 +1,4 @@
-"There are lots of bugs in the online plugins, do not WASTE time with it!!
+"There are lots of bugs in online plugins, do not WASTE time fixing them!
 "so ~/.vim/ToggleCommentify_incompatible.vim
 "nmap <s-a-F12> :call ToggleCommentify()<CR>
 "nmap <F12> :TC<cr>
@@ -27,6 +27,8 @@ function! ToggleCommentLine()
     elseif fileType =~ '[^w]*sh$' || fileType == 'make' || fileType == 'python' || fileType == 'perl' || fileType == 'crontab'
         let commentSymbol = '#'
     elseif filename =~ '.screenrc' || filename =~ '[Rr]egistry*' || filename =~ 'cshrc_common' || fileType == 'cfg' || filename =~ 'COMMIT_EDITMSG'
+        let commentSymbol = '#'
+    elseif filename =~ '.yaml'
         let commentSymbol = '#'
     else
         "for IDL scripts
