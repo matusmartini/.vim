@@ -116,6 +116,9 @@ endif
 " SCROLL up/down c-y/c-e
 " zz CENTER your screen where your cursor is, zt (zb) top (bottom) of the window
 
+"FREEZE terminal c-s
+"UNFREEZE c-q
+
 
 " Calculator WRITE result at cursor position in Insert mode
 " <c-r>=(3+1)*5<cr>
@@ -463,14 +466,16 @@ set printoptions=portrait:n,number:y
 " e.g. to PASTE text from the register k, TYPE "kp
 " <c-r> " in Insert mode INSERTs the content of the unnamed register
 " the stuff I yanked/deleted...
+" SELECT visual block by v (and MOVING arrow), PRESS "ky
+" PASTE it by "kp
 
 " SEE special mappings for Insert mode
 ":help i_ctrl-g
 "i_ctrl-e INSERT the character that is below the cursor
 
 
-" The following should also ignore the leading whitespaces
-" TRY uncommenting the following line if need to ignore leading whitespaces
+" The following should also IGNORE the leading whitespaces
+" TRY uncommenting the following line to ignore leading whitespaces
 "set diffexpr=MyDiff()
 function MyDiff()
    let opt = ""
@@ -484,7 +489,7 @@ function MyDiff()
     \  " > " . v:fname_out
 endfunction"
 " IGNORE (trailing) whitespaces in the diff (not the leading ones, alas!)
-"set diffopt+=iwhite
+set diffopt+=iwhite
 "set diffopt+=icase
 
 
@@ -509,11 +514,60 @@ ino <f1> <esc>:call ToggleCommentLine()<LF>li
 " COMMENT the visual selection
 vno <buffer> <f1> :call ToggleCommentLine()<LF>
 
-"SHIFT line left by 8 white-spaces and CONTINUE writing at the EOL (useful when writing a commit message in Git)
-"no <f5> <<...A 
-"no <f5> 0xxA 
-" If only one file is modified:
-no <f5> 0xxj2ddxkA
+"Great VIM scripting cheatsheet!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"https://devhints.io/vimscript
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+"Useful when writing a commit message in Git
+"More generic one (does not require 'Changes not staged for commit')
+"Uses range between 'Changes' and first empty line with comment character '#' after
+"no <f5> gg:/Changes/;/#$/-1s/^#//g<cr>?On branch<cr>0xyyp0DyyPo
+"no <f5> gg:/Changes/;/Changes not/-1s/^#\(\s*mod\)\(.*\)/\1\2/g<cr>?On branch<cr>0xyyp0DyyPo
+"no <f5> gg:/Changes not/+1;/Untrack/-1s/\smodified:/-modified:/g<cr>gg:/Changes/;/Untrack/-1s/^#\(\s*mod\)\(.*\)/\1\2/g<cr>?On branch<cr>0xyyp0DyyPo
+"no <f5> gg:/Changes/;/Untrack/-1s/^#\(\s*mod\)\(.*\)/\1\2/g<cr>gg:s/Changes not.*
+"no <f5> gg:/Changes/;/\<(Changes\|Untracked\)\>/-1s/^#\(\s*mod\)\(.*\)/\1\2/g<cr>?On branch<cr>0xyyp0DyyPo
+":echo search('Changes not','ncpe')
+
+"CHECK if 'Changes not staged' present in git-commit pre-populated message.
+"If yes then REMOVE ':' so it can be used as an identifying pattern for changes to be uncommented:
+" modified: new file: deleted: renamed:
+"UNCOMMENT lines with ':' (originally with ':\s')
+fu! GitCommit()
+  let u = search('Untracked ','ncpe')
+  if search('Changes not','ncpe') == 1
+    if u == 1
+      exe "norm gg:/Changes not/;/Untracked /-1s/\:/ /g\<cr>"
+    el
+      exe "norm gg:/Changes not/,$s/\:/ /g\<cr>"
+    en
+  en
+  if u == 1
+    exe "norm gg:/Changes to/;/Untracked /-1s/^#\\(.*\\):/\\1:/g\<cr>"
+  el
+    exe "norm gg:/Changes to/,$s/^#\\(.*\\):/\\1:/g\<cr>"
+  en
+  exe "norm ?On branch\<cr>0xyyp0DyyPp"
+endf
+no <f5> :call GitCommit()<cr>i
+
+"For testing
+if 0
+  fu! GitCommit()
+    if search('Changes not','ncpe') == 1
+      "Set mark t
+      "exe "norm gg/Changes not\<cr>mt"
+      "search('(use','ncpe',line("'t"))
+      exe "norm gg:/Changes not/;/Untrack/-1s/\:/ /g\<cr>"
+      "exe "norm gg:/Changes not/+1;/Untrack/-1s/\\smodified:/-modified:/g\<cr>"
+      "exe "norm gg:/Changes/;/Changes not/-1s/^#\\(\\\)\\(.*\\)/\\1\\2/g\<cr>?On branch\<cr>0xyyp0DyyPp"
+    en
+    "exe "norm gg:/Changes/;/Untrack/-1s/^#\\(\\s*mod\\)\\(.*\\)/\\1\\2/g\<cr>?On branch\<cr>0xyyp0DyyPp"
+    "Do not INCLUDE 'Changes to be committed:'
+    "exe "norm gg:/Changes/;/Untrack/-1s/^#\\(.*\\):\\(\\s\\)/\\1:\\2/g\<cr>?On branch\<cr>0xyyp0DyyPp"
+    "INCLUDE 'Changes to be committed:'
+    exe "norm gg:/Changes/;/Untrack/-1s/^#\\(.*\\):/\\1:/g\<cr>?On branch\<cr>0xyyp0DyyPp"
+  endf
+endif
 
 " For some reason <s-f1> or <a-f1> wouldn't map on metosrv8
 " Shift with functions keys does not work in Screen sessions!
