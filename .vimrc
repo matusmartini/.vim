@@ -284,13 +284,12 @@ if &t_Co > 2 || has("gui_running")
   hi DiffAdd    ctermfg=black
   hi Folded term=standout ctermfg=black ctermbg=7
   hi Search ctermfg=black
-  hi Todo term=none ctermfg=1 ctermbg=4 guifg=1 guibg=4
+  hi Todo term=none ctermfg=1 ctermbg=4
   " ADD a more visual cursor
   "set cursorline
-  hi CursorLine ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
+  hi CursorLine ctermfg=black cterm=none ctermbg=yellow term=none
   "set cursorcolumn
-  hi CursorColumn ctermfg=black cterm=none ctermbg=yellow term=none guibg=none
-  "hi CursorLine ctermfg=darkblue cterm=none ctermbg=white term=none guibg=none
+  hi CursorColumn ctermfg=black cterm=none ctermbg=yellow term=none
   " TOGGLE
   no <f6> :set cursorcolumn!<Bar>set cursorline!<CR>
 
@@ -352,23 +351,6 @@ endif   "gui_running (for highlighting)
 "set mouse=c
 "set mouse="" or just set mouse
 
-
-" FOLD commented lines by typing :fo<tab> (auto-COMPLETEs to Fold1stChar)
-" # - shell        !,c - fortran         ; - idl
-":Fold1stChar ;
-" zR/zM  UNFOLD/FOLD all
-function! Fold1stChar(...)
-    let mark = "set fde=getline(v:lnum)[0]==\\\"" . a:1 . "\\\""
-    exe mark
-    set foldmethod=expr
-endfunction
-command! -nargs=1 Fold1stChar :call Fold1stChar(<q-args>)
-
-
-" FOLD on the current /search/ pattern. SEE only the lines containing
-" what I'm searching for, zM (FOLDs everything), c-y (SCROLL to beginning)
-nn \z :se fde=getline(v:lnum)!~@/ fdm=expr<cr> zM 999<c-y>
-" nn \z :se fde=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 fdm=expr<cr> zM
 
 " TOGGLE Paste mode on/off (TURN ON in Insert mode)
 " very useful when PASTing a text into VIM to AVOID ugly indentation
@@ -608,3 +590,23 @@ set laststatus=2
 "colorscheme wombat
 "colo desert
 "colo colorzone
+
+
+" FOLD on the current /search/ pattern. SEE only the lines containing
+" what I'm searching for, zM (FOLDs everything), c-y (SCROLL to beginning)
+nn \z :se fde=getline(v:lnum)!~@/ fdm=expr<cr> zM 999<c-y>
+" nn \z :se fde=(getline(v:lnum)=~@/)?0:(getline(v:lnum-1)=~@/)\\|\\|(getline(v:lnum+1)=~@/)?1:2 fdm=expr<cr> zM
+
+" FOLD commented lines by typing :fo<tab> (auto-COMPLETEs to Fold1stChar)
+" # - shell        !,c - fortran         ; - idl
+":Fold1stChar ;
+" zR/zM  UNFOLD/FOLD all
+
+if v:version >= 703
+  function! Fold1stChar(...)
+    let mark = "set fde=getline(v:lnum)[0]==\\\"" . a:1 . "\\\""
+    exe mark
+    set foldmethod=expr
+  endfunction
+  command! -nargs=1 Fold1stChar :call Fold1stChar(<q-args>)
+endif
