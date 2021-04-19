@@ -213,7 +213,7 @@ ino <f4> <esc>lmpg~iw`pi
 
 " SHOW the time and info about the opened file (TYPE tt quickly)
 " :p modifier MAKEs the pathname absolute
-no tt :!l %:p<cr>
+no tt :!ls -la %:p<cr>
 
 
 " If vim LAUNCHed on halo.atmos.umd.edu
