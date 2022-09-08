@@ -324,6 +324,10 @@ if &t_Co > 2 || has("gui_running")
 
   "TOGGLE Spell-check on/off
   cno <f7> setlocal spell! spelllang=en_us
+  "]s FIND the misspelled word after the cursor (Forward search)
+  "[s FIND the misspelled word before the cursor (Backward search)
+  "After you located the misspelled word, TYPE z= for suggestions
+  "zg ADD the word under the cursor as good word in spellfile (your own dictionary)
 
 
   "TOGGLE search result highlighting
@@ -528,9 +532,11 @@ fu! GitCommit()
   el
     exe "norm gg:/Changes to/,$s/^#\\(.*\\):/\\1:/g\<cr>"
   en
-  exe "norm ?On branch\<cr>0xyyp0DyyPp"
+  "exe "norm ?On branch\<cr>0xyyp0DyyPp"
+  "exe "norm ?On branch\<cr>0xjjddjxjjx6kxyyPo"
+  exe "norm ?On branch\<cr>0xjjxdd3k2pkyyjpI "
 endf
-no <f5> :call GitCommit()<cr>i
+no <f5> :call GitCommit()<cr>A
 
 "For testing
 if 0
