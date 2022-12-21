@@ -281,13 +281,30 @@ if &t_Co > 2 || has("gui_running")
   hi DiffDelete ctermfg=4 cterm=bold ctermbg=black
   hi DiffText   ctermfg=2 cterm=bold ctermbg=1
   hi DiffChange ctermfg=2 cterm=bold ctermbg=5
-  hi DiffAdd    ctermfg=black
+  "hi DiffAdd    ctermfg=white
+  if $HOSTNAME[0:4] == "narwh"
+    "Best color combinations in this order for Added line (vimdiff)
+    hi DiffAdd    ctermfg=yellow ctermbg=Green
+    "hi DiffAdd    ctermfg=yellow ctermbg=Red
+    "hi DiffAdd    ctermfg=white ctermbg=green
+    "hi DiffAdd    ctermfg=yellow ctermbg=cyan
+    "hi DiffAdd    ctermfg=white ctermbg=Red
+    "hi DiffAdd    ctermfg=white ctermbg=cyan
+    "hi DiffAdd  ctermbg=blue
+    "hi DiffAdd    ctermfg=white ctermbg=Yellow
+    "hi DiffAdd cterm=NONE ctermfg=white ctermbg=yellow gui=NONE guifg=bg guibg=Green
+    "hi DiffAdd cterm=NONE ctermbg=Green gui=NONE guifg=bg guibg=Green
+    "hi DiffDelete cterm=NONE ctermbg=Red gui=NONE guifg=bg guibg=Red
+    "hi DiffChange cterm=NONE ctermbg=Yellow gui=NONE guifg=bg guibg=Yellow
+    "hi DiffText cterm=NONE ctermbg=Magenta gui=NONE guifg=bg guibg=Magenta
+  endif
   hi Folded term=standout ctermfg=black ctermbg=7
   hi Search ctermfg=black
   hi Todo term=none ctermfg=1 ctermbg=4
   " ADD a more visual cursor
   "set cursorline
   hi CursorLine ctermfg=black cterm=none ctermbg=yellow term=none
+  "hi CursorLine cterm=none ctermbg=yellow term=none
   "set cursorcolumn
   hi CursorColumn ctermfg=black cterm=none ctermbg=yellow term=none
   " TOGGLE
@@ -321,6 +338,7 @@ if &t_Co > 2 || has("gui_running")
   au FileType make  setlocal noexpandtab
   au FileType changelog  setlocal noexpandtab
   "au FileType pro so /usr/share/vim/vim70/syntax/idl.vim
+  au FileType python  setlocal expandtab
 
   "TOGGLE Spell-check on/off
   cno <f7> setlocal spell! spelllang=en_us
@@ -475,7 +493,7 @@ function MyDiff()
     \  " > " . v:fname_out
 endfunction"
 " IGNORE (trailing) whitespaces in the diff (not the leading ones, alas!)
-set diffopt+=iwhite
+"set diffopt+=iwhite
 "set diffopt+=icase
 
 
@@ -585,8 +603,6 @@ au BufWritePost * if getline(1) =~ "^#!/" | silent exe "!chmod u+x <afile> >& /d
 "set statusline=%<%F%h%m%r%h%w%y\ %{&ff}\ %{strftime(\"%c\",getftime(expand(\"%:p\")))}%=\ lin:%l\,%L\ col:%c%V\ %P
 set statusline=%<%F%h%m%r%h%w%y\ %{strftime(\"%a-%d-%b-%Y\ %k:%M\",getftime(expand(\"%:p\")))}%=\ %l\,%L\ Col:%c%V\ %P
 set laststatus=2
-
-
 
 "endif   "if not on halo.atmos.umd.edu
 
