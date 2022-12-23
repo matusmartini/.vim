@@ -329,9 +329,9 @@ if &t_Co > 2 || has("gui_running")
   set softtabstop=4
   set expandtab
 
+  "HIGHLIGHT tabs
+  au FileType python  setlocal list! listchars=tab:>-
   "TOGGLE highlight tabs and trailing spaces
-  "set list listchars=tab:»¤,trail:¤
-  "ENTER the middle-dot by pressing ctrl-k then .M
   "ino <f6> <c-o>:set list! listchars=tab:>-,trail:*<cr>
   "no <c-t> :set list! listchars=tab:>-,trail:-<cr>
 
