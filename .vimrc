@@ -540,19 +540,20 @@ fu! GitCommit()
   let u = search('Untracked ','ncpe')
   if search('Changes not','ncpe') == 1
     if u == 1
-      exe "norm gg:/Changes not/;/Untracked /-1s/\:/ /g\<cr>"
+      "exe "norm gg:/Changes not/;/Untracked /-1s/\:/ /g\<cr>"
     el
-      exe "norm gg:/Changes not/,$s/\:/ /g\<cr>"
+      "exe "norm gg:/Changes not/,$s/\:/ /g\<cr>"
     en
   en
   if u == 1
-    exe "norm gg:/Changes to/;/Untracked /-1s/^#\\(.*\\):/\\1:/g\<cr>"
+    "exe "norm gg:/Changes to/;/Untracked /-1s/^#\\(.*\\):/\\1:/g\<cr>"
   el
-    exe "norm gg:/Changes to/,$s/^#\\(.*\\):/\\1:/g\<cr>"
+    "exe "norm gg:/Changes to/,$s/^#\\(.*\\):/\\1:/g\<cr>"
   en
   "exe "norm ?On branch\<cr>0xyyp0DyyPp"
   "exe "norm ?On branch\<cr>0xjjddjxjjx6kxyyPo"
-  exe "norm ?On branch\<cr>0xjjxdd3k2pkyyjpI "
+  "exe "norm ?On branch\<cr>0xjjxdd3k2pkyyjpI "
+  exe "norm ?On branch\<cr>0xkxyy2pa #"
 endf
 no <f5> :call GitCommit()<cr>A
 
