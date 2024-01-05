@@ -521,7 +521,7 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 
 "Great VIM scripting cheatsheet!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 "https://devhints.io/vimscript
-"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 "Useful when writing a commit message in Git
 "More generic one (does not require 'Changes not staged for commit')
