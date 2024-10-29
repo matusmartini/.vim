@@ -1,8 +1,8 @@
-" USE VIM settings, rather then Vi settings (much better!)
+" USE VIM settings, rather then VI settings (much better!)
 " This must be first, because it changes other options as a side effect
 set nocompatible
 
-" ALLOW backspacing over everything in insert mode
+"ALLOW backspacing over everything in insert mode
 set backspace=indent,eol,start
 
 "if has("vms")
@@ -20,7 +20,7 @@ set showfulltag         "SHOW/INSERT the full tag with keyword options
 " For Win32 GUI, REMOVE 't' flag from 'guioptions': no tearoff menu entries
 "let &guioptions = substitute(&guioptions, "t", "", "g")
 
-" TYPE gq for formatting
+"TYPE gq for formatting
 "set textwidth=70
 set textwidth=0
 set wrapmargin=0
