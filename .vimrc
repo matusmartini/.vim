@@ -25,6 +25,9 @@ set showfulltag         "SHOW/INSERT the full tag with keyword options
 set textwidth=0
 set wrapmargin=0
 
+"CLEAR screen on VIM exit
+"au VimLeave * :!clear
+
 
 " Only DO this part when compiled with support for autocommands.
 if has("autocmd")
@@ -494,7 +497,7 @@ function MyDiff()
     \  " > " . v:fname_out
 endfunction"
 " IGNORE (trailing) whitespaces in the diff (not the leading ones, alas!)
-"set diffopt+=iwhite
+set diffopt+=iwhite
 "set diffopt+=icase
 
 
@@ -505,6 +508,7 @@ endfunction"
 "dp       diff put
 ":diffu   diff update
 ":%diffput   put all changes from the current buffer to the 'other' buffer
+":%diffget   get all changes from the 'other' buffer
 
 " UPDATE the view automatically in Vimdiff upon writing changes to file
 autocmd BufWritePost * if &diff == 1 | diffupdate | endif

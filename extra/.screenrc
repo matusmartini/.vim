@@ -132,3 +132,6 @@ bind ' ' windowlist -b
 # CHANGE window
 #<F12> <number> 
 #<F12> <space><up/down><enter>
+
+#TURN alternate screen - Clears VIM buffer and displays original terminal screen after VIM is closed
+altscreen on

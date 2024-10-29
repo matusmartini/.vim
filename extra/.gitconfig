@@ -31,6 +31,7 @@
         ci = commit
         co = checkout
         br = branch --sort=-committerdate
+        bra = ls-remote --heads
         ;git br | tac   ; PRINT last-modified local branch at the end (reverse cat command)
         st = status
         ls = ls-files
