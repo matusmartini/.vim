@@ -326,7 +326,6 @@ if &t_Co > 2 || has("gui_running")
   "match OverLength /\%133v.*/
 
 
-
   "USE 4 spaces when 'Tab' is hit, except in Makefiles
   set tabstop=8
   set shiftwidth=2
@@ -368,7 +367,6 @@ if &t_Co > 2 || has("gui_running")
 
 
 endif   "gui_running (for highlighting)
-
 
 
 " ENABLE mouse in all modes normal, visual, insert
