@@ -285,8 +285,8 @@ if &t_Co > 2 || has("gui_running")
   hi DiffText   ctermfg=2 cterm=bold ctermbg=1
   hi DiffChange ctermfg=2 cterm=bold ctermbg=5
   "hi DiffAdd    ctermfg=white
-  "For narwhal and nautilus
-  if $HOSTNAME[0:1] == "na"
+  "For narwhal and nautilus and atlantis
+  "if $HOSTNAME[0:1] == "na"
     "Best color combinations in this order for Added line (vimdiff)
     hi DiffAdd    ctermfg=yellow ctermbg=Green
     "hi DiffAdd    ctermfg=yellow ctermbg=Red
@@ -301,7 +301,7 @@ if &t_Co > 2 || has("gui_running")
     "hi DiffDelete cterm=NONE ctermbg=Red gui=NONE guifg=bg guibg=Red
     "hi DiffChange cterm=NONE ctermbg=Yellow gui=NONE guifg=bg guibg=Yellow
     "hi DiffText cterm=NONE ctermbg=Magenta gui=NONE guifg=bg guibg=Magenta
-  endif
+  "endif
   hi Folded term=standout ctermfg=black ctermbg=7
   hi Search ctermfg=black
   hi Todo term=none ctermfg=1 ctermbg=4
