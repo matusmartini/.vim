@@ -43,6 +43,7 @@ if has("autocmd")
   au BufNewFile,BufRead idl.*ini,dale.txt,*.pro  setf idlang
   au BufNewFile,BufRead *.ncl setf ncl
   au BufNewFile,BufRead *namelist*,*.inp,*.jnl,*.in,*.nml,*.IN  setf fortran
+  au BufNewFile,BufRead *.nml.main  setf fortran
   au BufNewFile,BufRead config*  setf make
   "mail files (in ~/maildir/*/cur)
   au BufEnter * if expand("%:p:h") =~ "maildir/.*cur" | setf mail | endif
