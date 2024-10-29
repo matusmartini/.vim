@@ -617,7 +617,6 @@ set laststatus=2
 "colo desert
 "colo colorzone
 
-
 " FOLD on the current /search/ pattern. SEE only the lines containing
 " what I'm searching for, zM (FOLDs everything), c-y (SCROLL to beginning)
 nn \z :se fde=getline(v:lnum)!~@/ fdm=expr<cr> zM 999<c-y>
