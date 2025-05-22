@@ -536,6 +536,9 @@ vno <buffer> <f1> :call ToggleCommentLine()<LF>
 "no <f5> gg:/Changes/;/\<(Changes\|Untracked\)\>/-1s/^#\(\s*mod\)\(.*\)/\1\2/g<cr>?On branch<cr>0xyyp0DyyPo
 ":echo search('Changes not','ncpe')
 
+"Before this to work one needs to set
+"git config --global core.editor "vim"
+"export GIT_EDITOR=vim
 "CHECK if 'Changes not staged' present in git-commit pre-populated message.
 "If yes then REMOVE ':' so it can be used as an identifying pattern for changes to be uncommented:
 " modified: new file: deleted: renamed:
@@ -560,6 +563,8 @@ fu! GitCommit()
   exe "norm ?On branch\<cr>0xkxyy2pa #"
 endf
 no <f5> :call GitCommit()<cr>A
+"Much simpler macro than above
+"no <f5> 4jxxkPA
 
 "For testing
 if 0
